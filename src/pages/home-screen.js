@@ -8,6 +8,7 @@ import UseEffectExample from "../hooks/useEffectEx1"
 const HomeScreen=()=>{
     const[products,setProducts]=useState([])
 //    const {name}  = useContext(DataShare)
+const{addCartItems}=useContext(DataShare)
 
     useEffect(()=>{
         fetchProducts()
@@ -60,6 +61,7 @@ const HomeScreen=()=>{
                         <Link  to={`${brand}/${id}`}  >
                         click to see product</Link>
                     </button>
+                    <button onClick={()=>addCartItems(eachProduct)}  >Add to cart</button>
                     </>
 
                 )

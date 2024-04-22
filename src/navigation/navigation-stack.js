@@ -5,6 +5,7 @@ import InvalidScreen from "../pages/invalid-screen"
 import { Component, createContext, useState } from "react"
 import ProductDetail from "../pages/productDetail"
 import LoginScreen from "../pages/login-screen"
+import CartScreen from "../pages/cart-screen"
 
 
 
@@ -14,6 +15,7 @@ export const DataShare = createContext()
 
 const NavigationStack=()=>{
     const[login,setLogin]=useState(false)
+    const[cartItems,setCartItems]=useState([])
     const[data,setData]=useState(
        { name:"sai",
         city:"hyderaab",
@@ -29,11 +31,33 @@ const NavigationStack=()=>{
         setLogin(true)
     }
 
+    const addCartItems = (eachItem) =>{
+        console.log('eachItem: ', eachItem);
+        
+        
+
+        
+
+        setCartItems([...cartItems,eachItem])
+        console.log('cartItems: ', cartItems);
+
+
+         
+    }
+
+    const removeCartItems= (id)=>{
+
+    }
+
     return(
         <DataShare.Provider value={{
             data,
             changeData,
-            loginMethod
+            loginMethod,
+            cartItems,
+            addCartItems,
+            removeCartItems
+
         }} >
 
       
@@ -45,8 +69,12 @@ const NavigationStack=()=>{
         ?
         <Routes>
         <Route path="/" Component={HomeScreen} />
-        <Route path="/contact" Component={ContactScreen} />
+        <Route path="/contact" Component={ContactScreen} >
+            <Route index Component={InvalidScreen} />
+
+        </Route>
         <Route path="*" Component={InvalidScreen} />
+        <Route path="/cartScreen" Component={CartScreen} />
         <Route path=":brand/:productId" Component={ProductDetail} />
         </Routes>
         :

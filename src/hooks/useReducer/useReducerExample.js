@@ -9,7 +9,7 @@ const reducerFunction =(state,action)=>{
     switch(action.type){
         case "INCREMENT_AGE":
 
-        return {...state,age:state.age+10}
+        return {...state,age:state.age+action.payload}
 
 
         case "DECREMENT_AGE":
@@ -60,7 +60,9 @@ const UseReducerExample =()=>{
 
     const incrementAge=()=>{
         const action ={
-                type :"INCREMENT_AGE"
+                type :"INCREMENT_AGE",
+                payload:20,
+                payload1:100
              }
 
         dispatchFunction(action)

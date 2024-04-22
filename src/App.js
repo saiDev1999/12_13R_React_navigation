@@ -8,6 +8,16 @@ function App() {
 
 export default App;
 
+// state
+
+
+// Tasks:
+
+// 1. Repeat the class 
+// 2. 5 examples on different scenerios using useMemo
+// 3. 5 examples  useCallback
+// 4. state lifting in react 
+
 
 // Tasks :
 // 1. Repeat the class
